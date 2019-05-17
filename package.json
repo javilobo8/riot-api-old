@@ -16,7 +16,11 @@
     "publish-major": "np major"
   },
   "keywords": [],
-  "author": "",
+  "author": "javilobo8",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/javilobo8/riot-api.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^24.0.13",
