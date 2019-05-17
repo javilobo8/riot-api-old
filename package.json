@@ -15,6 +15,9 @@
     "publish-minor": "np minor",
     "publish-major": "np major"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [],
   "author": "javilobo8",
   "repository": {
