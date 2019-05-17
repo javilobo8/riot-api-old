@@ -25,10 +25,10 @@ export default class RiotAPI {
     return response.data as SummonerDTO;
   }
 
-  public async getEntries(region: Regions, encryptedSummonerId: string): Promise<LeagueEntryDTO> {
+  public async getEntries(region: Regions, encryptedSummonerId: string): Promise<LeagueEntryDTO[]> {
     const response = await this.request(`${region}/${RiotAPI.ENTRIES_URL}/${encodeURIComponent(encryptedSummonerId)}`);
     console.log(response.headers);
-    return response.data as LeagueEntryDTO;
+    return response.data as LeagueEntryDTO[];
   }
 
   public async getChampionMastery(region: Regions, encryptedSummonerId: string): Promise<ChampionMasteryDTO[]> {
