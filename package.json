@@ -1,5 +1,5 @@
 {
-  "name": "riot-api",
+  "name": "@javilobo8/riot-api",
   "version": "0.0.0",
   "description": "",
   "main": "lib/index.js",
