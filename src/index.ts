@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import * as url from 'url';
 import { RegionKey, SummonerDTO, LeagueEntryDTO, ChampionMasteryDTO } from './types';
 import { getRegion } from './utils';
 
@@ -21,17 +22,20 @@ export default class RiotAPI {
   }
 
   public async getSummonerByName(region: RegionKey, summonerName: string): Promise<SummonerDTO> {
-    const response = await this.request(`${getRegion(region)}/${RiotAPI.SUMMONER_URL}/${encodeURIComponent(summonerName)}`);
+    const baseUrl = url.resolve(getRegion(region), RiotAPI.SUMMONER_URL);
+    const response = await this.request(`${baseUrl}/${encodeURIComponent(summonerName)}`);
     return response.data as SummonerDTO;
   }
 
   public async getEntries(region: RegionKey, encryptedSummonerId: string): Promise<LeagueEntryDTO[]> {
-    const response = await this.request(`${getRegion(region)}/${RiotAPI.ENTRIES_URL}/${encodeURIComponent(encryptedSummonerId)}`);
+    const baseUrl = url.resolve(getRegion(region), RiotAPI.ENTRIES_URL);
+    const response = await this.request(`${baseUrl}/${encodeURIComponent(encryptedSummonerId)}`);
     return response.data as LeagueEntryDTO[];
   }
 
   public async getChampionMastery(region: RegionKey, encryptedSummonerId: string): Promise<ChampionMasteryDTO[]> {
-    const response = await this.request(`${getRegion(region)}/${RiotAPI.CHAMPION_MASTERY_URL}/${encodeURIComponent(encryptedSummonerId)}`);
+    const baseUrl = url.resolve(getRegion(region), RiotAPI.CHAMPION_MASTERY_URL);
+    const response = await this.request(`${baseUrl}/${encodeURIComponent(encryptedSummonerId)}`);
     return response.data as ChampionMasteryDTO[];
   }
 }
