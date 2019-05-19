@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-import { Regions, SummonerDTO, LeagueEntryDTO, ChampionMasteryDTO } from './types';
+import { RegionKey, SummonerDTO, LeagueEntryDTO, ChampionMasteryDTO } from './types';
+import { getRegion } from './utils';
 
 export * from './types';
 
@@ -19,20 +20,18 @@ export default class RiotAPI {
     return axios({ url, method, params: { api_key: this.apiKey } });
   }
 
-  public async getSummonerByName(region: Regions, summonerName: string): Promise<SummonerDTO> {
-    const response = await this.request(`${region}/${RiotAPI.SUMMONER_URL}/${encodeURIComponent(summonerName)}`);
-    console.log(response.headers);
+  public async getSummonerByName(region: RegionKey, summonerName: string): Promise<SummonerDTO> {
+    const response = await this.request(`${getRegion(region)}/${RiotAPI.SUMMONER_URL}/${encodeURIComponent(summonerName)}`);
     return response.data as SummonerDTO;
   }
 
-  public async getEntries(region: Regions, encryptedSummonerId: string): Promise<LeagueEntryDTO[]> {
-    const response = await this.request(`${region}/${RiotAPI.ENTRIES_URL}/${encodeURIComponent(encryptedSummonerId)}`);
-    console.log(response.headers);
+  public async getEntries(region: RegionKey, encryptedSummonerId: string): Promise<LeagueEntryDTO[]> {
+    const response = await this.request(`${getRegion(region)}/${RiotAPI.ENTRIES_URL}/${encodeURIComponent(encryptedSummonerId)}`);
     return response.data as LeagueEntryDTO[];
   }
 
-  public async getChampionMastery(region: Regions, encryptedSummonerId: string): Promise<ChampionMasteryDTO[]> {
-    const response = await this.request(`${region}/${RiotAPI.CHAMPION_MASTERY_URL}/${encodeURIComponent(encryptedSummonerId)}`);
+  public async getChampionMastery(region: RegionKey, encryptedSummonerId: string): Promise<ChampionMasteryDTO[]> {
+    const response = await this.request(`${getRegion(region)}/${RiotAPI.CHAMPION_MASTERY_URL}/${encodeURIComponent(encryptedSummonerId)}`);
     return response.data as ChampionMasteryDTO[];
   }
 }

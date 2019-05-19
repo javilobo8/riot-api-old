@@ -44,17 +44,17 @@ export type ChampionMasteryDTO = {
   summonerId: string; // Summoner ID for this entry. (Encrypted)
 }
 
-export enum Regions {
-  BR = 'https://br1.api.riotgames.com',
-  EUNE = 'https://eun1.api.riotgames.com',
-  EUW = 'https://euw1.api.riotgames.com',
-  JP = 'https://jp1.api.riotgames.com',
-  KR = 'https://kr.api.riotgames.com',
-  LAN = 'https://la1.api.riotgames.com',
-  LAS = 'https://la2.api.riotgames.com',
-  NA = 'https://na1.api.riotgames.com',
-  OCE = 'https://oc1.api.riotgames.com',
-  TR = 'https://tr1.api.riotgames.com',
-  RU = 'https://ru.api.riotgames.com',
-  PBE = 'https://pbe1.api.riotgames.com',
+export enum RegionKey {
+  BR = 'BR',
+  EUNE = 'EUNE',
+  EUW = 'EUW',
+  JP = 'JP',
+  KR = 'KR',
+  LAN = 'LAN',
+  LAS = 'LAS',
+  NA = 'NA',
+  OCE = 'OCE',
+  TR = 'TR',
+  RU = 'RU',
+  PBE = 'PBE',
 }
