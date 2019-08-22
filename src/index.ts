@@ -42,4 +42,12 @@ export default class RiotAPI {
 
     return response.data as ChampionMasteryDTO[];
   }
+
+  public async getThirdPartyCode(region: RegionKey, encryptedSummonerId: string): Promise<string> {
+    const url = `${getRegion(region)}/lol/platform/v4/third-party-code/by-summoner/${encodeURIComponent(encryptedSummonerId)}`;
+
+    const response = await this.request(url);
+
+    return response.data as string;
+  }
 }
